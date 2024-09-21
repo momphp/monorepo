@@ -1,17 +1,27 @@
 {
     "name": "mom/monorepo",
     "description": "The Mom PHP framework monorepo.",
-    "type": "project",
-    "require-dev": {
-        "symplify/monorepo-builder": "^11.2"
-    },
     "license": "MIT",
+    "type": "project",
     "authors": [
         {
             "name": "Darwin Luague",
             "email": "darwinluague9001@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "php": "^8.3"
+    },
+    "require-dev": {
+        "symplify/monorepo-builder": "^11.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mom\\Data\\": "packages/data/src/"
+        }
+    },
+    "replace": {
+        "mom/data": "self.version"
+    },
+    "minimum-stability": "stable"
 }
