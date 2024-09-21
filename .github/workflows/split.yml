@@ -1,0 +1,59 @@
+name: 'Split Packages'
+
+on:
+    push:
+        branches:
+            - main
+        tags:
+            - '*'
+
+env:
+    # 1. for GitHub split
+    GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+jobs:
+    packages_split:
+        runs-on: ubuntu-latest
+
+        strategy:
+            fail-fast: false
+            matrix:
+                # define package to repository map
+                package:
+                    -
+                        local_path: 'data'
+                        split_repository: 'data'
+                    
+
+        steps:
+            -   uses: actions/checkout@v2
+
+            # no tag
+            -
+                if: "!startsWith(github.ref, 'refs/tags/')"
+                uses: "danharrin/monorepo-split-github-action@v2.3.0"
+                with:
+                    package_directory: 'packages/${{ matrix.package.local_path }}'
+
+                    repository_organization: 'momphp'
+                    repository_name: '${{ matrix.package.split_repository }}'
+
+                    # ↓ the user signed under the split commit
+                    user_name: "dluague"
+                    user_email: "darwinluague9001@gmail.com"
+
+            # with tag
+            -
+                if: "startsWith(github.ref, 'refs/tags/')"
+                uses: "danharrin/monorepo-split-github-action@v2.3.0"
+                with:
+                    tag: ${GITHUB_REF#refs/tags/}
+
+                    package_directory: 'packages/${{ matrix.package.local_path }}'
+
+                    repository_organization: 'momphp'
+                    repository_name: '${{ matrix.package.split_repository }}'
+
+                    # ↓ the user signed under the split commit
+                    user_name: "dluague"
+                    user_email: "darwinluague9001@gmail.com"

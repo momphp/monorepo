@@ -1,0 +1,17 @@
+{
+    "name": "mom/monorepo",
+    "description": "The Mom PHP framework monorepo.",
+    "type": "project",
+    "require-dev": {
+        "symplify/monorepo-builder": "^11.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Darwin Luague",
+            "email": "darwinluague9001@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
