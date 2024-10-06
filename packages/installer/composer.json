@@ -1,0 +1,42 @@
+{
+  "name": "mom/installer",
+  "description": "Mom application installer.",
+  "keywords": ["mom"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Darwin Luague",
+      "email": "darwin@momphp.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "illuminate/filesystem": "^v11.26.0",
+    "illuminate/support": "^v11.26.0",
+    "laravel/prompts": "^v0.3.0",
+    "symfony/console": "^v7.1.5",
+    "symfony/process": "^v7.1.5"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.10",
+    "phpunit/phpunit": "^11.4.0"
+  },
+  "bin": [
+    "bin/mom"
+  ],
+  "autoload": {
+    "psr-4": {
+      "Mom\\Installer\\Console\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mom\\Installer\\Console\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

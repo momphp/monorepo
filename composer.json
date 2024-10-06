@@ -10,18 +10,48 @@
         }
     ],
     "require": {
-        "php": "^8.3"
+        "illuminate/collections": "^v11.26.0",
+        "illuminate/database": "^v11.26.0",
+        "illuminate/filesystem": "^v11.26.0",
+        "illuminate/http": "^v11.26.0",
+        "illuminate/support": "^v11.26.0",
+        "laravel/framework": "^11.9",
+        "laravel/pint": "v1.18.1",
+        "laravel/prompts": "^v0.3.0",
+        "laravel/tinker": "^2.9",
+        "php": "^8.2",
+        "symfony/console": "^v7.1.5",
+        "symfony/process": "^v7.1.5"
     },
     "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "laravel/sail": "^1.26",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.1",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^11.4.0",
         "symplify/monorepo-builder": "^11.2"
     },
+    "replace": {
+        "mom/data": "self.version",
+        "mom/installer": "self.version",
+        "mom/mom": "self.version"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Mom\\Data\\": "packages/data/src/"
+            "App\\": "packages/mom/app/",
+            "Mom\\Data\\": "packages/data/src/",
+            "Mom\\Installer\\Console\\": "packages/installer/src/"
         }
     },
-    "replace": {
-        "mom/data": "self.version"
+    "autoload-dev": {
+        "psr-4": {
+            "Mom\\Installer\\Console\\Tests\\": "packages/installer/tests/"
+        }
     },
-    "minimum-stability": "stable"
+    "extra": {
+        "laravel": []
+    }
 }

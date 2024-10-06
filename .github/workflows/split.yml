@@ -23,6 +23,12 @@ jobs:
                     -
                         local_path: 'data'
                         split_repository: 'data'
+                    -
+                        local_path: 'installer'
+                        split_repository: 'installer'
+                    -
+                        local_path: 'mom'
+                        split_repository: 'mom'
                     
 
         steps:
