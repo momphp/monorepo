@@ -251,6 +251,7 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/data/vendor/spatie/macroable" />
       <excludeFolder url="file://$MODULE_DIR$/packages/data/vendor/spatie/ray" />
       <excludeFolder url="file://$MODULE_DIR$/packages/data/vendor/symfony/stopwatch" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

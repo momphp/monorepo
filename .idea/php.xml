@@ -17,6 +17,9 @@
   </component>
   <component name="PhpIncludePathManager">
     <include_path>
+      <path value="$PROJECT_DIR$/packages/data/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/packages/data/vendor/laravel/prompts" />
+      <path value="$PROJECT_DIR$/packages/data/vendor/laravel/serializable-closure" />
       <path value="$PROJECT_DIR$/packages/data/vendor/composer" />
       <path value="$PROJECT_DIR$/packages/data/vendor/psr/container" />
       <path value="$PROJECT_DIR$/packages/data/vendor/psr/http-message" />
@@ -145,9 +148,7 @@
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/laravel/sail" />
       <path value="$PROJECT_DIR$/vendor/laravel/prompts" />
-      <path value="$PROJECT_DIR$/vendor/laravel/framework" />
       <path value="$PROJECT_DIR$/vendor/laravel/serializable-closure" />
-      <path value="$PROJECT_DIR$/vendor/laravel/pint" />
       <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
@@ -247,9 +248,6 @@
       <path value="$PROJECT_DIR$/packages/data/vendor/phpoption/phpoption" />
       <path value="$PROJECT_DIR$/packages/data/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/packages/data/vendor/tijsverkoyen/css-to-inline-styles" />
-      <path value="$PROJECT_DIR$/packages/data/vendor/laravel/framework" />
-      <path value="$PROJECT_DIR$/packages/data/vendor/laravel/serializable-closure" />
-      <path value="$PROJECT_DIR$/packages/data/vendor/laravel/prompts" />
       <path value="$PROJECT_DIR$/packages/data/vendor/nette/utils" />
       <path value="$PROJECT_DIR$/packages/data/vendor/nette/schema" />
       <path value="$PROJECT_DIR$/packages/data/vendor/dragonmantank/cron-expression" />
