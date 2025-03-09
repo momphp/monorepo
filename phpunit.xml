@@ -4,14 +4,9 @@
          bootstrap="vendor/autoload.php"
          colors="true"
 >
-    <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests</directory>
-        </testsuite>
-    </testsuites>
     <source>
         <include>
-            <directory suffix=".php">./src</directory>
+            <directory suffix="Test.php">./packages</directory>
         </include>
     </source>
 </phpunit>
