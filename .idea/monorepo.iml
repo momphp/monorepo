@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/packages/mom/tests" isTestSource="true" packagePrefix="Mom\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/packages/data/tests" isTestSource="true" packagePrefix="Mom\Data\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symplify/monorepo-builder" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/brick/math" />

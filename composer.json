@@ -16,7 +16,7 @@
         "laravel/framework": "^12.1",
         "laravel/prompts": "^v0.3.0",
         "laravel/tinker": "^2.9",
-        "php": "^8.2",
+        "php": "^8.4",
         "spatie/ray": "^1.41",
         "symfony/console": "^v7.1.5",
         "symfony/process": "^v7.1.5"

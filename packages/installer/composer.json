@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "php": "^8.2",
+    "php": "^8.4",
     "illuminate/filesystem": "^v12.1",
     "illuminate/support": "^v12.1",
     "laravel/prompts": "^v0.3.0",
