@@ -17,6 +17,7 @@
         "laravel/prompts": "^v0.3.0",
         "laravel/tinker": "^2.9",
         "php": "^8.4",
+        "spatie/laravel-query-builder": "^6.3.5",
         "spatie/ray": "^1.41",
         "symfony/console": "^v7.1.5",
         "symfony/process": "^v7.1.5"
@@ -29,7 +30,8 @@
         "pestphp/pest": "^v3.3",
         "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^11.4.0",
-        "symplify/monorepo-builder": "^11.2"
+        "symplify/monorepo-builder": "^11.2",
+        "orchestra/testbench": "^10.6"
     },
     "replace": {
         "mom/data": "self.version",
@@ -49,7 +51,10 @@
         "psr-4": {
             "Mom\\Data\\Tests\\": "packages/data/tests/",
             "Mom\\Installer\\Console\\Tests\\": "packages/installer/tests/",
-            "Mom\\Tests\\": "packages/mom/tests/"
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/",
+            "Mom\\Tests\\": "tests/"
         }
     },
     "config": {
@@ -59,5 +64,27 @@
     },
     "extra": {
         "laravel": []
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
+        ],
+        "lint": [
+            "@php vendor/bin/pint --ansi",
+            "@php vendor/bin/phpstan analyse --verbose --ansi"
+        ],
+        "test": [
+            "@clear",
+            "@php vendor/bin/pest"
+        ]
     }
 }

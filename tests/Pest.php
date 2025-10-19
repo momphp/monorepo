@@ -13,11 +13,11 @@ declare(strict_types=1);
 |
 */
 
-use Mom\Data\Tests\TestCase;
+use Mom\Tests\TestCase;
 
-pest()
-    ->extend(TestCase::class)
-    ->in('Unit', '../src');
+uses(TestCase::class)
+    ->beforeEach(function (): void {})
+    ->in('../packages');
 
 /*
 |--------------------------------------------------------------------------
