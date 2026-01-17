@@ -23,15 +23,16 @@
         "symfony/process": "^v7.1.5"
     },
     "require-dev": {
+        "laradumps/laradumps-core": "^4.0",
         "laravel/pint": "^1.18",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.1",
+        "orchestra/testbench": "^10.6",
         "pestphp/pest": "^v3.3",
         "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^11.4.0",
-        "symplify/monorepo-builder": "^11.2",
-        "orchestra/testbench": "^10.6"
+        "symplify/monorepo-builder": "^11.2"
     },
     "replace": {
         "mom/data": "self.version",
@@ -51,10 +52,13 @@
         "psr-4": {
             "Mom\\Data\\Tests\\": "packages/data/tests/",
             "Mom\\Installer\\Console\\Tests\\": "packages/installer/tests/",
+            "Mom\\Tests\\": [
+                "packages/mom/tests/",
+                "tests/"
+            ],
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
-            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/",
-            "Mom\\Tests\\": "tests/"
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
     "config": {

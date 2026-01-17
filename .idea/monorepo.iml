@@ -12,6 +12,8 @@
       <sourceFolder url="file://$MODULE_DIR$/workbench/database/factories" isTestSource="true" packagePrefix="Workbench\Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/workbench/database/seeders" isTestSource="true" packagePrefix="Workbench\Database\Seeders\" />
       <sourceFolder url="file://$MODULE_DIR$/packages" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/mom/tests" isTestSource="true" packagePrefix="Mom\Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symplify/monorepo-builder" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/brick/math" />
@@ -152,6 +154,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-query-builder" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php84" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php85" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laradumps/laradumps-core" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
