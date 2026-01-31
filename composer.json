@@ -17,7 +17,6 @@
         "laravel/prompts": "^v0.3.0",
         "laravel/tinker": "^2.9",
         "php": "^8.4",
-        "spatie/laravel-query-builder": "^6.3.5",
         "spatie/ray": "^1.41",
         "symfony/console": "^v7.1.5",
         "symfony/process": "^v7.1.5"

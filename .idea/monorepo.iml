@@ -150,8 +150,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/orchestra/testbench" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/orchestra/testbench-core" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/orchestra/workbench" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-package-tools" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-query-builder" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php84" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php85" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laradumps/laradumps-core" />
