@@ -1,93 +1,91 @@
 {
-    "name": "mom/monorepo",
-    "description": "The Mom PHP framework monorepo.",
-    "license": "MIT",
-    "type": "project",
-    "authors": [
-        {
-            "name": "Darwin Luague",
-            "email": "darwinluague9001@gmail.com"
-        }
-    ],
-    "require": {
-        "fakerphp/faker": "^1.23",
-        "illuminate/filesystem": "^v12.1",
-        "illuminate/support": "^v12.1",
-        "laravel/framework": "^12.1",
-        "laravel/prompts": "^v0.3.0",
-        "laravel/tinker": "^2.9",
-        "php": "^8.4",
-        "spatie/ray": "^1.41",
-        "symfony/console": "^v7.1.5",
-        "symfony/process": "^v7.1.5"
-    },
-    "require-dev": {
-        "laradumps/laradumps-core": "^4.0",
-        "laravel/pint": "^1.18",
-        "laravel/sail": "^1.26",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.1",
-        "orchestra/testbench": "^10.6",
-        "pestphp/pest": "^v3.3",
-        "phpstan/phpstan": "^2.1",
-        "phpunit/phpunit": "^11.4.0",
-        "symplify/monorepo-builder": "^11.2"
-    },
-    "replace": {
-        "mom/data": "self.version",
-        "mom/installer": "self.version",
-        "mom/mom": "self.version"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "autoload": {
-        "psr-4": {
-            "App\\": "packages/mom/app/",
-            "Mom\\Data\\": "packages/data/src/",
-            "Mom\\Installer\\Console\\": "packages/installer/src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Mom\\Data\\Tests\\": "packages/data/tests/",
-            "Mom\\Installer\\Console\\Tests\\": "packages/installer/tests/",
-            "Mom\\Tests\\": [
-                "packages/mom/tests/",
-                "tests/"
-            ],
-            "Workbench\\App\\": "workbench/app/",
-            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
-            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
-    },
-    "extra": {
-        "laravel": []
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "@clear",
-            "@prepare"
-        ],
-        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
-        "prepare": "@php vendor/bin/testbench package:discover --ansi",
-        "build": "@php vendor/bin/testbench workbench:build --ansi",
-        "serve": [
-            "Composer\\Config::disableProcessTimeout",
-            "@build",
-            "@php vendor/bin/testbench serve --ansi"
-        ],
-        "lint": [
-            "@php vendor/bin/pint --ansi",
-            "@php vendor/bin/phpstan analyse --verbose --ansi"
-        ],
-        "test": [
-            "@clear",
-            "@php vendor/bin/pest"
-        ]
+  "name": "mom/monorepo",
+  "description": "The Mom PHP framework monorepo.",
+  "license": "MIT",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Darwin Luague",
+      "email": "darwinluague9001@gmail.com"
     }
+  ],
+  "require": {
+    "fakerphp/faker": "^1.23",
+    "laravel/framework": "^13.0",
+    "laravel/prompts": "^v0.3.0",
+    "laravel/tinker": "^3.0",
+    "php": "^8.4",
+    "spatie/ray": "^1.41",
+    "symfony/console": "^v7.1.5",
+    "symfony/process": "^v7.1.5"
+  },
+  "require-dev": {
+    "laradumps/laradumps-core": "^4.0",
+    "laravel/pint": "^1.18",
+    "laravel/sail": "^1.26",
+    "mockery/mockery": "^1.6",
+    "nunomaduro/collision": "^8.1",
+    "orchestra/testbench": "^11.0",
+    "pestphp/pest": "^v3.3",
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^11.4.0",
+    "symplify/monorepo-builder": "^11.2"
+  },
+  "replace": {
+    "mom/data": "self.version",
+    "mom/installer": "self.version",
+    "mom/mom": "self.version"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "App\\": "packages/mom/app/",
+      "Mom\\Data\\": "packages/data/src/",
+      "Mom\\Installer\\Console\\": "packages/installer/src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mom\\Data\\Tests\\": "packages/data/tests/",
+      "Mom\\Installer\\Console\\Tests\\": "packages/installer/tests/",
+      "Mom\\Tests\\": [
+        "packages/mom/tests/",
+        "tests/"
+      ],
+      "Workbench\\App\\": "workbench/app/",
+      "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+      "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "extra": {
+    "laravel": []
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "@clear",
+      "@prepare"
+    ],
+    "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+    "prepare": "@php vendor/bin/testbench package:discover --ansi",
+    "build": "@php vendor/bin/testbench workbench:build --ansi",
+    "serve": [
+      "Composer\\Config::disableProcessTimeout",
+      "@build",
+      "@php vendor/bin/testbench serve --ansi"
+    ],
+    "lint": [
+      "@php vendor/bin/pint --ansi",
+      "@php vendor/bin/phpstan analyse --verbose --ansi"
+    ],
+    "test": [
+      "@clear",
+      "@php vendor/bin/pest"
+    ]
+  }
 }

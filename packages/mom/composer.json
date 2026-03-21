@@ -2,11 +2,14 @@
   "name": "mom/mom",
   "type": "project",
   "description": "The skeleton of the Mom PHP framework.",
-  "keywords": ["mom", "framework"],
+  "keywords": [
+    "mom",
+    "framework"
+  ],
   "license": "MIT",
   "require": {
     "php": "^8.4",
-    "laravel/framework": "^12.1",
+    "laravel/framework": "^13.0",
     "laravel/tinker": "^2.9"
   },
   "require-dev": {

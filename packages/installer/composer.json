@@ -1,7 +1,9 @@
 {
   "name": "mom/installer",
   "description": "Mom application installer.",
-  "keywords": ["mom"],
+  "keywords": [
+    "mom"
+  ],
   "license": "MIT",
   "authors": [
     {
@@ -11,8 +13,8 @@
   ],
   "require": {
     "php": "^8.4",
-    "illuminate/filesystem": "^v12.1",
-    "illuminate/support": "^v12.1",
+    "illuminate/filesystem": "^v13.0",
+    "illuminate/support": "^v13.0",
     "laravel/prompts": "^v0.3.0",
     "symfony/console": "^v7.1.5",
     "symfony/process": "^v7.1.5"
