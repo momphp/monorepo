@@ -106,8 +106,7 @@ abstract class AbstractData implements Arrayable
                 return [$property->name => $name::new()];
             })->toArray();
 
-        /** @phpstan-ignore-next-line */
-        return new static(...$properties);
+        return new static(...$properties); // @phpstan-ignore new.static, return.type
     }
 
     /**
@@ -128,8 +127,7 @@ abstract class AbstractData implements Arrayable
                 return [$property->name => $name::fromDataArray($item)];
             })->toArray();
 
-        /** @phpstan-ignore-next-line */
-        return new static(...$properties);
+        return new static(...$properties); // @phpstan-ignore new.static, return.type
     }
 
     /**
@@ -150,10 +148,7 @@ abstract class AbstractData implements Arrayable
                 return [$property->name => $name::fromValidation($validated, $data)];
             })->toArray();
 
-        /** @phpstan-var static<TModel> $instance */
-        $instance = new static(...$properties);
-
-        return $instance;
+        return new static(...$properties); // @phpstan-ignore new.static, return.type
     }
 
     /**
@@ -178,7 +173,7 @@ abstract class AbstractData implements Arrayable
                 return [$property->name => $name::fromEloquentModel($model)];
             })->toArray();
 
-        return new static(...$properties)
+        return new static(...$properties) // @phpstan-ignore new.static
             ->setEloquentModel($model)
             ->setMorphAlias($model->getMorphClass());
     }
@@ -207,10 +202,7 @@ abstract class AbstractData implements Arrayable
                 return [$property->name => $name::$method($data, $options)];
             })->toArray();
 
-        /** @phpstan-var static<TModel> $instance */
-        $instance = new static(...$properties);
-
-        return $instance;
+        return new static(...$properties); // @phpstan-ignore new.static, return.type
     }
 
     public static function fromStandardClass(stdClass $data, mixed $options = null): static

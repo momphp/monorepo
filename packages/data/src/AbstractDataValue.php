@@ -15,7 +15,7 @@ abstract class AbstractDataValue extends AbstractValue
 
     public static function new(): static
     {
-        return new static();
+        return new static;
     }
 
     public static function fromClosure(Closure $value): static
