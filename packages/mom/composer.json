@@ -47,9 +47,7 @@
             "@php artisan migrate --graceful --ansi"
         ]
     },
-    "extra": {
-        "laravel": []
-    },
+    "extra": [],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
