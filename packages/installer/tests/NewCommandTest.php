@@ -25,20 +25,29 @@ class NewCommandTest extends TestCase
         }
 
         $app = new Application('Mom Installer');
-        $app->add(new NewCommand());
+        $app->add(new NewCommand);
 
         $tester = new CommandTester($app->find('new'));
 
-        $statusCode = $tester->execute(['name' => $scaffoldDirectoryName], ['interactive' => false]);
+        // The installer resolves the app name against the working directory.
+        $originalDirectory = getcwd();
+        chdir(__DIR__ . '/..');
 
-        $this->assertSame(0, $statusCode);
+        try {
+            // mom/mom has no stable release yet, so install from the main branch.
+            $statusCode = $tester->execute(['name' => $scaffoldDirectoryName, '--dev' => true], ['interactive' => false]);
+        } finally {
+            chdir($originalDirectory);
+        }
+
+        $this->assertSame(0, $statusCode, $tester->getDisplay());
         $this->assertDirectoryExists($scaffoldDirectory . '/vendor');
         $this->assertFileExists($scaffoldDirectory . '/.env');
     }
 
     public function test_on_at_least_laravel_11(): void
     {
-        $command = new NewCommand();
+        $command = new NewCommand;
 
         $onLaravel10 = $command->usingMomVersionOrNewer(11, __DIR__ . '/fixtures/laravel10');
         $onLaravel11 = $command->usingMomVersionOrNewer(11, __DIR__ . '/fixtures/laravel11');
