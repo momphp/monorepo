@@ -114,6 +114,6 @@ abstract class AbstractDataValue extends AbstractValue
 
     public function toPrimitive(): ?array
     {
-        return $this->toNullableData()->toArray();
+        return $this->toNullableData()?->toArray();
     }
 }

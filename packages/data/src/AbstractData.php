@@ -200,7 +200,7 @@ abstract class AbstractData implements Arrayable
                 /** @var AbstractValue $name */
                 $name = $type->getName();
 
-                if (false === method_exists($name, $method)) {
+                if (null === $method || false === method_exists($name, $method)) {
                     return [$property->name => $name::new()];
                 }
 
@@ -242,7 +242,7 @@ abstract class AbstractData implements Arrayable
         }
 
         if ($item instanceof AbstractData) {
-            return static::fromData($item, $method, $options);
+            return static::fromData($item, $method ?? 'fromData', $options);
         }
 
         if ($item instanceof stdClass) {
@@ -544,7 +544,7 @@ abstract class AbstractData implements Arrayable
             })->toArray();
 
         if (in_array('class', $fields) || 0 === count($fields)) {
-            $data['class'] = self::class;
+            $data['class'] = static::class;
         }
 
         return $data;
