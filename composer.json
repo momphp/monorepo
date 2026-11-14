@@ -23,6 +23,7 @@
     },
     "require-dev": {
         "laradumps/laradumps-core": "^4.0",
+        "laravel/pail": "^1.2.5",
         "laravel/pint": "^1.18",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
@@ -43,6 +44,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "packages/mom/app/",
+            "Database\\Factories\\": "packages/mom/database/factories/",
+            "Database\\Seeders\\": "packages/mom/database/seeders/",
             "Mom\\Data\\": "packages/data/src/",
             "Mom\\Installer\\Console\\": "packages/installer/src/"
         }
@@ -51,10 +54,8 @@
         "psr-4": {
             "Mom\\Data\\Tests\\": "packages/data/tests/",
             "Mom\\Installer\\Console\\Tests\\": "packages/installer/tests/",
-            "Mom\\Tests\\": [
-                "packages/mom/tests/",
-                "tests/"
-            ],
+            "Mom\\Tests\\": "tests/",
+            "Tests\\": "packages/mom/tests/",
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"

@@ -7,11 +7,17 @@
     <testsuites>
         <testsuite name="Package Test Suite">
             <directory suffix="Test.php">./packages</directory>
+            <exclude>./packages/installer/tests-output</exclude>
+            <!-- The mom skeleton's tests boot a standalone app; run them from a scaffolded project. -->
+            <exclude>./packages/mom/tests</exclude>
         </testsuite>
     </testsuites>
     <source>
         <include>
             <directory suffix=".php">./packages</directory>
         </include>
+        <exclude>
+            <directory>./packages/installer/tests-output</directory>
+        </exclude>
     </source>
 </phpunit>
