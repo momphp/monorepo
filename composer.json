@@ -66,9 +66,7 @@
             "pestphp/pest-plugin": true
         }
     },
-    "extra": {
-        "laravel": []
-    },
+    "extra": [],
     "scripts": {
         "post-autoload-dump": [
             "@clear",
