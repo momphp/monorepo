@@ -69,7 +69,6 @@
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
         ]
     },
-    "extra": [],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
