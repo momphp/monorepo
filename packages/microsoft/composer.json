@@ -1,0 +1,44 @@
+{
+    "name": "mom/microsoft",
+    "description": "A Microsoft 365 connector for mom/connectors: sign in with Microsoft and read and send mail through Microsoft Graph.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mom\\Microsoft\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mom\\Microsoft\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Darwin Luague",
+            "email": "darwinluague9001@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.4",
+        "laravel/framework": "^13.30",
+        "mom/connectors": "^6.4"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^v3.3",
+        "phpstan/phpstan": "^2.1"
+    },
+    "suggest": {
+        "socialiteproviders/microsoft": "Gives Laravel Socialite the \"microsoft\" driver this connector signs in with."
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "pest"
+    }
+}

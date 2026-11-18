@@ -28,6 +28,18 @@ $this->callAfterResolving(ConnectorRegistry::class, function (ConnectorRegistry 
 - In `ConnectedAccount`, put secrets in `credentials` and everything else in `settings`. `settings` may be sent back to the form; `credentials` must be stored encrypted and never leave the server.
 - When a field names a server to connect to, check `PublicHost::allows($host)` before connecting.
 
+### Connected accounts
+
+- A type is handed a `Mom\Connectors\Connection`, never the app's own class for a connected account. Ask it for `accessToken()` (sign-in types) or `credentials()` (form types) when needed; don't keep either.
+- The app's class for a connected account implements `Connection`. Token refresh and decrypting credentials stay in the app.
+- When the outside service will not let the type in, throw `CouldNotReachConnector::needsReconnect($company)`, `::unavailable($company, $previous)` or `::refused($reason)`. Don't invent other exceptions for this.
+
+### Email
+
+- A type whose accounts can be used for email implements `Mom\Connectors\Mail\ProvidesMail` and returns a `MailClient`.
+- A `MailClient` returns messages as `InboundMail` (ids without angle brackets, addresses in lower case) and takes an `OutgoingMail` to send. `send()` must never retry: a second attempt could send the same email twice.
+- Convert between `InboundMail` and the app's stored message in one place in the app, not inside a connector.
+
 ### Asking the registry
 
 - Use `ConnectorRegistry::instance()->get($key)` for a stored account's type. It returns an `UnknownConnectorType` instead of null when the type is no longer installed.

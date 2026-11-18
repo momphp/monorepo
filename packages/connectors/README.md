@@ -14,9 +14,11 @@ $registry->providing('mail');               // the types whose accounts can be u
 
 ## What this package is, and is not
 
-It is the **core** only: the classes a connector is written against, and the registry.
+It is the **core**: the classes a connector is written against, the registry, and the contracts for the first thing connected accounts are used for, email.
 
 Your app still owns everything about a *connected* account: the table it is stored in, the encrypted credentials, the routes that send someone to sign in and take them back, token refresh, and the page. The package gives those parts one shape to work with.
+
+Connectors themselves are separate packages, such as [`mom/microsoft`](https://github.com/momphp/microsoft), or classes in your app.
 
 ## Requirements
 
@@ -35,16 +37,7 @@ The service provider is discovered automatically. It registers `ConnectorRegistr
 
 ### 1. Name what connected accounts can be used for
 
-A capability is a key, a label and one of **your** interfaces. A feature asks for accounts whose type implements that interface, never for a particular type.
-
-```php
-namespace App\Mail\Contracts;
-
-interface ProvidesMail
-{
-    public function mailClient(Connection $connection): MailClient;
-}
-```
+A capability is a key, a label and an interface. A feature asks for accounts whose type implements that interface, never for a particular type. For email the interface ships with the package (`Mom\Connectors\Mail\ProvidesMail`, see [Email](#email)); for anything else it is one of your own.
 
 ### 2. Write a connector type
 
@@ -176,6 +169,65 @@ A sign-in type is **available** when `services.{driver}.client_id` and `client_s
 | `message('regex', '…')` | What to say when a rule fails. |
 
 `$field->validationRules()` gives the rules for a form request, `$field->messages` the custom messages, and `$field->toArray()` what a page needs to draw it. A password is a secret: `isSecret()` is true, and what was typed should never be sent back to the page.
+
+## Connected accounts
+
+A connector type never sees how your app stores a connected account. It is handed a `Connection`, which your app's own class implements:
+
+```php
+use Mom\Connectors\Connection;
+
+final class ConnectedAccount extends Model implements Connection
+{
+    public function connectionId(): string { return (string) $this->id; }
+    public function account(): string { return $this->account; }             // such as its address
+    public function settings(): array { return $this->settings ?? []; }      // nothing secret
+    public function hasOption(string $option): bool { return ($this->settings[$option] ?? false) === true; }
+    public function accessToken(): string { return $this->freshAccessToken(); }   // your token refresh
+    public function credentials(): array { return $this->credentials ?? []; }      // decrypted
+}
+```
+
+`accessToken()` is for accounts connected by signing in, `credentials()` for ones connected by a form. A type asks for whichever it needs and never keeps it.
+
+When the outside service will not let a type in, the type throws `CouldNotReachConnector`:
+
+| Thrown with | Means | Flags |
+|---|---|---|
+| `needsReconnect($company)` | What is stored is no longer accepted; only connecting again helps. | `needsReconnect` |
+| `unavailable($company, $previous)` | The service is down or busy; trying later may work. | `isTemporary` |
+| `refused($reason)` | The service said no, with a reason to show. | neither |
+
+`$exception->company` names who runs the service, when known.
+
+## Email
+
+`Mom\Connectors\Mail` holds the contracts for connected accounts that are used for email, so a mail connector and the app meet in the middle.
+
+A connector type implements `ProvidesMail`:
+
+```php
+public function mailClient(Connection $connection, ?string $sharedAddress = null): MailClient;
+public function opensSharedMailboxes(Connection $connection): bool;
+```
+
+and returns a `MailClient`, one mailbox at a mail service:
+
+| Method | Does |
+|---|---|
+| `checkInbox()` | Opens the inbox, to find out whether the mailbox can be read. |
+| `inboxMessagesSince($since, $limit)` | The inbox's messages from a time, oldest first: ids and when they arrived. |
+| `message($id)` | One message as an `InboundMail`, or `null` when it is a draft or gone. |
+| `attachments($id)`, `attachmentContents($id, $attachmentId)` | What is attached, then one file's bytes. |
+| `send(OutgoingMail $mail)` | Sends a reply once and returns a `SentMail`. Never retried. |
+
+`InboundMail` is the same whichever service it came through: ids without angle brackets, addresses in lower case, the whole text and, apart from it, what the sender wrote without the quoted history. `OutgoingMail` carries the recipients, the text, a subject and a marker every subject keeps (such as a ticket's `[#123]`), and optionally the `InboundMail` it answers. `toEmail()` builds the whole message, with reply headers and its own Message-ID, for services that are handed one to send.
+
+Register the capability with your registry:
+
+```php
+$registry->capability(new Capability('mail', 'Email', ProvidesMail::class));
+```
 
 ## Servers someone typed in
 

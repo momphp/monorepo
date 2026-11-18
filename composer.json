@@ -38,6 +38,7 @@
         "mom/connectors": "self.version",
         "mom/data": "self.version",
         "mom/installer": "self.version",
+        "mom/microsoft": "self.version",
         "mom/mom": "self.version"
     },
     "minimum-stability": "dev",
@@ -49,7 +50,8 @@
             "Database\\Seeders\\": "packages/mom/database/seeders/",
             "Mom\\Connectors\\": "packages/connectors/src/",
             "Mom\\Data\\": "packages/data/src/",
-            "Mom\\Installer\\Console\\": "packages/installer/src/"
+            "Mom\\Installer\\Console\\": "packages/installer/src/",
+            "Mom\\Microsoft\\": "packages/microsoft/src/"
         }
     },
     "autoload-dev": {
@@ -57,6 +59,7 @@
             "Mom\\Connectors\\Tests\\": "packages/connectors/tests/",
             "Mom\\Data\\Tests\\": "packages/data/tests/",
             "Mom\\Installer\\Console\\Tests\\": "packages/installer/tests/",
+            "Mom\\Microsoft\\Tests\\": "packages/microsoft/tests/",
             "Mom\\Tests\\": "tests/",
             "Tests\\": "packages/mom/tests/",
             "Workbench\\App\\": "workbench/app/",

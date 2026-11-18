@@ -6,6 +6,7 @@ The monorepo for the Mom PHP framework, built on Laravel 13 and PHP 8.4.
 |---|---|---|---|
 | Typed data objects | `packages/data` | `mom/data` | `momphp/data` |
 | Connector SDK | `packages/connectors` | `mom/connectors` | `momphp/connectors` |
+| Microsoft 365 connector | `packages/microsoft` | `mom/microsoft` | `momphp/microsoft` |
 | Application skeleton | `packages/mom` | `mom/mom` | `momphp/mom` |
 | `mom new` CLI | `packages/installer` | `mom/installer` | `momphp/installer` |
 
@@ -43,7 +44,11 @@ Before committing, run Pint, PHPStan and the tests for the package you changed.
   - Its tests live in `packages/connectors/tests/Unit`, using the two made-up connector types under `tests/Fixtures`.
   - Like `packages/data`, it must keep working when tested on its own, so its tests use its own `tests/TestCase.php`. A test that needs the registry or the config registers `ConnectorsServiceProvider` itself, because the monorepo's test case does not.
   - How to use the package is described in `packages/connectors/README.md` and `packages/connectors/resources/boost/guidelines/core.blade.php`. Update both when the public API changes.
-  - It is the core only. Storage, routes and pages for connected accounts belong to the app that uses it.
+  - It is the core: the connector classes, the registry and the email contracts under `Mom\Connectors\Mail`. Storage, routes and pages for connected accounts belong to the app that uses it.
+- `packages/microsoft`:
+  - A connector built on `mom/connectors`. It depends on that package only through its public classes; never reach into an app.
+  - Its tests live in `packages/microsoft/tests/Unit` and fake Microsoft Graph with `Http::fake()`. `tests/Fixtures/FakeConnection.php` stands in for an app's connected account.
+  - How to use it is described in `packages/microsoft/README.md`. Update it when the public API changes.
 - `packages/mom` is a stock Laravel 13 skeleton. Its tests are excluded from the root suite in `phpunit.xml`.
 - `packages/installer/tests-output` holds generated apps and is excluded from the suite. Don't commit what's in it.
 

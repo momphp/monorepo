@@ -30,6 +30,9 @@ jobs:
                         local_path: 'installer'
                         split_repository: 'installer'
                     -
+                        local_path: 'microsoft'
+                        split_repository: 'microsoft'
+                    -
                         local_path: 'mom'
                         split_repository: 'mom'
                     
