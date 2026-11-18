@@ -5,6 +5,7 @@ The monorepo for the Mom PHP framework, built on Laravel 13 and PHP 8.4.
 | Package | Directory | Published as | Read-only split repo |
 |---|---|---|---|
 | Typed data objects | `packages/data` | `mom/data` | `momphp/data` |
+| Connector SDK | `packages/connectors` | `mom/connectors` | `momphp/connectors` |
 | Application skeleton | `packages/mom` | `mom/mom` | `momphp/mom` |
 | `mom new` CLI | `packages/installer` | `mom/installer` | `momphp/installer` |
 
@@ -38,6 +39,11 @@ Before committing, run Pint, PHPStan and the tests for the package you changed.
   - Its tests live in `packages/data/tests/Unit`, using the fixtures under `tests/Unit/User` and `tests/Unit/Role`.
   - The package must keep working when tested on its own (`composer test` inside the split repo), so its tests use its own `tests/TestCase.php` built on Orchestra Testbench.
   - How to use the package is described in `packages/data/README.md` and `packages/data/resources/boost/guidelines/core.blade.php`. Update both when the public API changes.
+- `packages/connectors`:
+  - Its tests live in `packages/connectors/tests/Unit`, using the two made-up connector types under `tests/Fixtures`.
+  - Like `packages/data`, it must keep working when tested on its own, so its tests use its own `tests/TestCase.php`. A test that needs the registry or the config registers `ConnectorsServiceProvider` itself, because the monorepo's test case does not.
+  - How to use the package is described in `packages/connectors/README.md` and `packages/connectors/resources/boost/guidelines/core.blade.php`. Update both when the public API changes.
+  - It is the core only. Storage, routes and pages for connected accounts belong to the app that uses it.
 - `packages/mom` is a stock Laravel 13 skeleton. Its tests are excluded from the root suite in `phpunit.xml`.
 - `packages/installer/tests-output` holds generated apps and is excluded from the suite. Don't commit what's in it.
 

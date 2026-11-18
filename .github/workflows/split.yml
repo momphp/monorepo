@@ -21,6 +21,9 @@ jobs:
                 # define package to repository map
                 package:
                     -
+                        local_path: 'connectors'
+                        split_repository: 'connectors'
+                    -
                         local_path: 'data'
                         split_repository: 'data'
                     -

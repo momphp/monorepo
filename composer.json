@@ -35,6 +35,7 @@
         "symplify/monorepo-builder": "^11.2"
     },
     "replace": {
+        "mom/connectors": "self.version",
         "mom/data": "self.version",
         "mom/installer": "self.version",
         "mom/mom": "self.version"
@@ -46,12 +47,14 @@
             "App\\": "packages/mom/app/",
             "Database\\Factories\\": "packages/mom/database/factories/",
             "Database\\Seeders\\": "packages/mom/database/seeders/",
+            "Mom\\Connectors\\": "packages/connectors/src/",
             "Mom\\Data\\": "packages/data/src/",
             "Mom\\Installer\\Console\\": "packages/installer/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
+            "Mom\\Connectors\\Tests\\": "packages/connectors/tests/",
             "Mom\\Data\\Tests\\": "packages/data/tests/",
             "Mom\\Installer\\Console\\Tests\\": "packages/installer/tests/",
             "Mom\\Tests\\": "tests/",
@@ -66,7 +69,13 @@
             "pestphp/pest-plugin": true
         }
     },
-    "extra": [],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mom\\Connectors\\ConnectorsServiceProvider"
+            ]
+        }
+    },
     "scripts": {
         "post-autoload-dump": [
             "@clear",

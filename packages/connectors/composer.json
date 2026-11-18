@@ -1,0 +1,47 @@
+{
+    "name": "mom/connectors",
+    "description": "A small SDK for describing the outside accounts a Laravel app connects.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mom\\Connectors\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mom\\Connectors\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Darwin Luague",
+            "email": "darwinluague9001@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.4",
+        "laravel/framework": "^13.30"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^v3.3",
+        "phpstan/phpstan": "^2.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mom\\Connectors\\ConnectorsServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "pest"
+    }
+}
