@@ -23,7 +23,7 @@
     "require": {
         "php": "^8.4",
         "laravel/framework": "^13.30",
-        "mom/connectors": "^6.4"
+        "mom/connectors": "^6.5"
     },
     "require-dev": {
         "orchestra/testbench": "^11.0",
