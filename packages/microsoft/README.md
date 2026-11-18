@@ -2,6 +2,8 @@
 
 A Microsoft 365 connector for [`mom/connectors`](https://github.com/momphp/connectors). An account is connected by signing in with Microsoft, and its mailbox, or a shared mailbox it can open, is read and sent from through Microsoft Graph.
 
+> **Experimental.** This package is new and is built on `mom/connectors`, which is experimental too. Its API may change in a minor release (6.x) until this note is removed. Pin an exact version, and read the release notes before you upgrade.
+
 ```php
 $type = new MicrosoftConnector;
 

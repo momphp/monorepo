@@ -2,6 +2,8 @@
 
 A small SDK for describing the outside accounts a Laravel app connects, such as a Microsoft 365 sign-in, a Google account or a mail server.
 
+> **Experimental.** This package is new, and its API may change in a minor release (6.x) until this note is removed. Pin an exact version, and read the release notes before you upgrade.
+
 Each kind of account is one class. It says what it is called, how an account is connected (by signing in, or by a form whose fields it declares) and what a connected account can be used for. The app asks a registry what exists and draws its pages from the answers, so adding a connector does not mean adding a page, a route or a request.
 
 ```php

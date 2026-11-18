@@ -45,6 +45,7 @@ Before committing, run Pint, PHPStan and the tests for the package you changed.
   - Like `packages/data`, it must keep working when tested on its own, so its tests use its own `tests/TestCase.php`. A test that needs the registry or the config registers `ConnectorsServiceProvider` itself, because the monorepo's test case does not.
   - How to use the package is described in `packages/connectors/README.md` and `packages/connectors/resources/boost/guidelines/core.blade.php`. Update both when the public API changes.
   - It is the core: the connector classes, the registry and the email contracts under `Mom\Connectors\Mail`. Storage, routes and pages for connected accounts belong to the app that uses it.
+  - It is marked **Experimental** in its README, as is `packages/microsoft`: their APIs may change in a minor release. Say so in the release notes when one does, and remove the note from both READMEs only when the maintainer asks.
 - `packages/microsoft`:
   - A connector built on `mom/connectors`. It depends on that package only through its public classes; never reach into an app.
   - Its tests live in `packages/microsoft/tests/Unit` and fake Microsoft Graph with `Http::fake()`. `tests/Fixtures/FakeConnection.php` stands in for an app's connected account.
